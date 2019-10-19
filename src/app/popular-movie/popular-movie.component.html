@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div *ngFor="let movie of filteredMovies">
-      <div class="col">
+      <div class="col" [routerLink]="['/movie', movie.id]">
         <div class="card m-3" style="width: 18rem; height: 42rem;">
           <img src="http://image.tmdb.org/t/p/w300{{movie.poster_path}}" class="card-img-top" alt="...">
           <div class="card-body h-100 ">

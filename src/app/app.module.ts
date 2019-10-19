@@ -8,13 +8,15 @@ import { AppComponent } from "./app.component";
 import { PopularMovieComponent } from "./popular-movie/popular-movie.component";
 import { HeaderComponent } from "./header/header.component";
 import { FooterComponent } from "./footer/footer.component";
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PopularMovieComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    MovieDetailsComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
