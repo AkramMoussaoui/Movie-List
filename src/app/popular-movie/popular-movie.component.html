@@ -8,7 +8,7 @@
             <h5 class="card-title text-center">{{movie.title}}</h5>
             <p class="card-text para">{{movie.overview}}</p>
             <p>Released in : {{movie.release_date}}</p>
-            <a href="#" class="btn btn-primary butt">View more</a>
+            <a href="#" class="btn btn-primary butt" [routerLink]="['/movie', movie.id]">View more</a>
           </div>
         </div>
       </div>
