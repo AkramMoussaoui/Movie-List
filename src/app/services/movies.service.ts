@@ -17,7 +17,7 @@ export class MoviesService {
   getPopularMovies(langage: string, page: string): Observable<IMovies[]> {
     const params = new HttpParams()
       .set("api_key", this.api_key)
-      .set("langage", langage)
+      .set("language", langage)
       .set("page", page);
     return this.httpClient.get<IPopular>(`${this.url}popular`, { params }).pipe(
       map(data => {
@@ -29,7 +29,7 @@ export class MoviesService {
   getMovieById(langage: string, id: string): Observable<IMovieID> {
     const params = new HttpParams()
       .set("api_key", this.api_key)
-      .set("langage", langage);
+      .set("language", langage);
     return this.httpClient.get<IMovieID>(`${this.url}${id}`, { params }).pipe(
       map(data => {
         return data;
@@ -51,7 +51,7 @@ export class MoviesService {
   getTopRatedMovie(langage: string, page: string): Observable<IMovies[]> {
     const params = new HttpParams()
       .set("api_key", this.api_key)
-      .set("langage", langage)
+      .set("language", langage)
       .set("page", page);
     return this.httpClient
       .get<IPopular>(`${this.url}top_rated`, { params })
