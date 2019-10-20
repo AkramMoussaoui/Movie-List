@@ -5,9 +5,9 @@ import { MovieDetailsComponent } from "./movie-details/movie-details.component";
 import { TopRatedComponent } from "./top-rated/top-rated.component";
 
 const routes: Routes = [
-  { path: "", redirectTo: "home", pathMatch: "full" },
+  { path: "", redirectTo: "home/1", pathMatch: "full" },
   {
-    path: "home",
+    path: "home/:id",
     component: PopularMovieComponent
   },
   {
@@ -15,13 +15,17 @@ const routes: Routes = [
     component: MovieDetailsComponent
   },
   {
-    path: "top",
+    path: "top/:id",
     component: TopRatedComponent
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, {
+      onSameUrlNavigation: "reload"
+    })
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
