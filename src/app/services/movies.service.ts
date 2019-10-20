@@ -23,4 +23,20 @@ export class MoviesService {
       })
     );
   }
+  getMovieById(id: string): Observable<any> {
+    return;
+  }
+  getTopRatedMovie(langage: string, page: string): Observable<IMovies[]> {
+    const params = new HttpParams()
+      .set("api_key", this.api_key)
+      .set("langage", langage)
+      .set("page", page);
+    return this.httpClient
+      .get<IPopular>(`${this.url}top_rated`, { params })
+      .pipe(
+        map(data => {
+          return data.results;
+        })
+      );
+  }
 }

@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { PopularMovieComponent } from "./popular-movie/popular-movie.component";
 import { MovieDetailsComponent } from "./movie-details/movie-details.component";
+import { TopRatedComponent } from "./top-rated/top-rated.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: "movie/:id",
     component: MovieDetailsComponent
+  },
+  {
+    path: "top",
+    component: TopRatedComponent
   }
 ];
 

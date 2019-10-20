@@ -1,1 +1,17 @@
-<p>top-rated works!</p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div *ngFor="let movie of filteredMovies">
+      <div class="col" [routerLink]="['/movie', movie.id]">
+        <div class="card m-3" style="width: 18rem; height: 42rem;">
+          <img src="http://image.tmdb.org/t/p/w300{{movie.poster_path}}" class="card-img-top" alt="...">
+          <div class="card-body h-100 ">
+            <h5 class="card-title text-center">{{movie.title}}</h5>
+            <p class="card-text para">{{movie.overview}}</p>
+            <p>Released in : {{movie.release_date}}</p>
+            <a href="#" class="btn btn-primary butt">View more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
