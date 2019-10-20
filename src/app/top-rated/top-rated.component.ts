@@ -22,7 +22,7 @@ export class TopRatedComponent implements OnInit, OnDestroy {
   page: number;
   filteredMovies: IMovies[];
   listFilter: string;
-
+  userLang: string;
   performFilter(filterBy: string): IMovies[] {
     filterBy = filterBy.toLocaleLowerCase();
     return this.movies.filter(
@@ -44,9 +44,10 @@ export class TopRatedComponent implements OnInit, OnDestroy {
         takeUntil(this.destroyed)
       )
       .subscribe(() => {
+        this.userLang = navigator.language || "en-US";
         this.page = +this.route.snapshot.params["id"];
         this.movieService
-          .getTopRatedMovie("en-US", this.page.toString())
+          .getTopRatedMovie(this.userLang, this.page.toString())
           .subscribe(data => {
             this.movies = data;
             this.filteredMovies = data;
@@ -58,9 +59,10 @@ export class TopRatedComponent implements OnInit, OnDestroy {
             : this.movies;
         });
       });
+    this.userLang = navigator.language || "en-US";
     this.page = +this.route.snapshot.params["id"];
     this.movieService
-      .getTopRatedMovie("en-US", this.page.toString())
+      .getTopRatedMovie(this.userLang, this.page.toString())
       .subscribe(data => {
         this.movies = data;
         this.filteredMovies = data;
