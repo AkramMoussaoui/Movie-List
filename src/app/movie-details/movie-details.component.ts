@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { MoviesService } from "../services/movies.service";
 import { ActivatedRoute } from "@angular/router";
 import { IMovieID } from "../Details";
-import { ICredit } from "../Credit";
+import { ICredit, Crew } from "../Credit";
 
 @Component({
   selector: "app-movie-details",
@@ -12,6 +12,8 @@ import { ICredit } from "../Credit";
 export class MovieDetailsComponent implements OnInit {
   movie: IMovieID;
   credit: ICredit;
+  writer: Crew[];
+  director: Crew[];
   constructor(
     private movieService: MoviesService,
     private route: ActivatedRoute
@@ -27,6 +29,8 @@ export class MovieDetailsComponent implements OnInit {
       .getMovieCredit(this.route.snapshot.params["id"])
       .subscribe(data => {
         this.credit = data;
+        this.director = data.crew.filter(item => item.job === "Director");
+        this.writer = data.crew.filter(item => item.job === "Writer");
       });
   }
 }
