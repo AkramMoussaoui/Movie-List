@@ -61,4 +61,13 @@ export class MoviesService {
         })
       );
   }
+
+  getVideo(id: string): Observable<string> {
+    const params = new HttpParams().set("api_key", this.api_key);
+    return this.httpClient.get<any>(`${this.url}${id}/videos`, { params }).pipe(
+      map(data => {
+        return data.results[0].key;
+      })
+    );
+  }
 }

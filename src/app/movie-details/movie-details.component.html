@@ -1,4 +1,9 @@
 <div class="container">
+  <div *ngIf="video" class="row mb-3">
+    <div class="embed-responsive embed-responsive-16by9">
+      <iframe class="embed-responsive-item" [src]="url" allowfullscreen></iframe>
+    </div>
+  </div>
   <div class="row">
     <div class="col-6">
       <img src="http://image.tmdb.org/t/p/w300{{movie?.poster_path}}" class="card-img-top" alt="...">
@@ -11,7 +16,7 @@
       <p>Language : <strong *ngFor="let language of movie?.spoken_languages"> {{language.name}} </strong> </p>
       <p>Country : <strong *ngFor="let country of movie?.production_countries"> {{country.name}} </strong> </p>
       <p>Actors : <strong *ngFor="let actor of credit?.cast"> {{actor?.name}}, </strong> </p>
-      <p *ngIf="writer.length">Writer : <strong *ngFor="let writer of writer"> {{writer?.name}}, </strong></p>
+      <p *ngIf="writer?.length">Writer : <strong *ngFor="let writer of writer"> {{writer?.name}}, </strong></p>
       <p>Director: <strong *ngFor="let director of director"> {{director?.name}} </strong></p>
       <p>Overview : {{movie?.overview}} </p>
       <button class="btn btn-primary">Add to favoris</button>
