@@ -5,6 +5,7 @@ import { map } from "rxjs/operators";
 import { IMovies, IPopular } from "../Popular";
 import { IMovieID } from "../Details";
 import { ICredit } from "../Credit";
+import { DomSanitizer } from "@angular/platform-browser";
 @Injectable({
   providedIn: "root"
 })
@@ -12,7 +13,10 @@ export class MoviesService {
   private url: string = "https://api.themoviedb.org/3/movie/";
   private api_key: string = "43b746b767edc8522cb6200aa1821bcb";
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    private sanitizer: DomSanitizer
+  ) {}
 
   getPopularMovies(langage: string, page: string): Observable<IMovies[]> {
     const params = new HttpParams()
@@ -21,6 +25,12 @@ export class MoviesService {
       .set("page", page);
     return this.httpClient.get<IPopular>(`${this.url}popular`, { params }).pipe(
       map(data => {
+        data.results.forEach(item => {
+          const imgUrl = "http://image.tmdb.org/t/p/w300" + item.poster_path;
+          item.poster_path = this.sanitizer.bypassSecurityTrustStyle(
+            `url(${imgUrl})`
+          );
+        });
         return data.results;
       })
     );

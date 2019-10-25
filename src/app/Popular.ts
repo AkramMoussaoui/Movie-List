@@ -2,7 +2,7 @@ export interface IMovies {
   popularity: number;
   vote_count: number;
   video: boolean;
-  poster_path: string;
+  poster_path: any;
   id: number;
   adult: boolean;
   backdrop_path: string;

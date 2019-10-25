@@ -66,6 +66,7 @@ export class PopularMovieComponent implements OnInit, OnDestroy {
       .subscribe(data => {
         this.movies = data;
         this.filteredMovies = data;
+        console.log(this.movies);
       });
     this.filter.currentMessage.subscribe(message => {
       this.listFilter = message;
