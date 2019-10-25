@@ -1,25 +1,30 @@
-<div class="container">
-  <div *ngIf="video" class="row mb-3">
-    <div class="embed-responsive embed-responsive-16by9">
-      <iframe class="embed-responsive-item" [src]="url" allowfullscreen></iframe>
-    </div>
-  </div>
+<div class="container mb-3 mt-3">
   <div class="row">
-    <div class="col-6">
-      <img src="http://image.tmdb.org/t/p/w300{{movie?.poster_path}}" class="card-img-top" alt="...">
+    <div class="col-lx-12 col-md-6">
+      <div *ngIf="video">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" [src]="url" allowfullscreen></iframe>
+        </div>
+      </div>
     </div>
-    <div class="col-6">
+    <div class="col-lx-12 col-md-6">
       <p>Rate : {{movie?.vote_average}} </p>
       <p>Released : {{movie?.release_date}} </p>
       <p>Run time : {{movie?.runtime}} </p>
       <p>Genre : <strong *ngFor="let genre of movie?.genres"> {{genre.name}} </strong> </p>
       <p>Language : <strong *ngFor="let language of movie?.spoken_languages"> {{language.name}} </strong> </p>
       <p>Country : <strong *ngFor="let country of movie?.production_countries"> {{country.name}} </strong> </p>
-      <p>Actors : <strong *ngFor="let actor of credit?.cast"> {{actor?.name}}, </strong> </p>
+      <p>Actors :
+        <strong *ngFor="let actor of credit?.cast;  let i=index">
+          <div *ngIf="i<4">
+            {{actor?.name}}
+          </div>
+        </strong>
+      </p>
       <p *ngIf="writer?.length">Writer : <strong *ngFor="let writer of writer"> {{writer?.name}}, </strong></p>
       <p>Director: <strong *ngFor="let director of director"> {{director?.name}} </strong></p>
       <p>Overview : {{movie?.overview}} </p>
-      <button class="btn btn-primary">Add to favoris</button>
     </div>
   </div>
 </div>
+

@@ -1,40 +1,75 @@
+<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
 <div class="container">
   <div class="row justify-content-center">
     <div *ngFor="let movie of filteredMovies">
       <div class="col" [routerLink]="['/movie', movie.id]">
-        <div class="card m-3" style="width: 18rem; height: 42rem;">
-          <img src="http://image.tmdb.org/t/p/w300{{movie.poster_path}}" class="card-img-top" alt="...">
-          <div class="card-body h-100 ">
-            <h5 class="card-title text-center">{{movie.title}}</h5>
-            <p class="card-text para">{{movie.overview}}</p>
-            <p>Released in : {{movie.release_date}}</p>
-            <a class="btn btn-primary butt" [routerLink]="['/movie', movie.id]">View more</a>
+        <div class="movie-card" style="width: 18rem; height: 35rem;">
+          <div class="movie-header" style="background-size: cover" [style.background-image]="movie.poster_path">
+            <div class="header-icon-container">
+              <a>
+                <i class="material-icons header-icon"></i>
+              </a>
+            </div>
           </div>
+          <!--movie-header-->
+          <div class="movie-content">
+            <div class="movie-content-header">
+              <a href="#">
+                <h3 class="movie-title">{{movie.title}}</h3>
+              </a>
+
+            </div>
+            <div class="movie-info">
+              <div class="info-section">
+                <label>Released date</label>
+                <span>{{movie.release_date}}</span>
+              </div>
+              <!--date,time-->
+              <div class="info-section">
+                <label>Vote</label>
+                <span>{{movie.vote_average}}</span>
+              </div>
+              <!--screen-->
+              <div class="info-section">
+                <label>Popularity</label>
+                <span>{{movie.popularity}}</span>
+              </div>
+              <!--row-->
+              <div class="info-section">
+                <label>Language</label>
+                <span>{{movie.original_language}}</span>
+              </div>
+              <!--seat-->
+            </div>
+          </div>
+          <!--movie-content-->
         </div>
+        <!--movie-card-->
       </div>
     </div>
   </div>
-  <div class=" row justify-content-center">
-    <nav aria-label="Page navigation example">
-      <ul class="pagination">
-        <li class="page-item">
-          <button *ngIf="page > 1" class="page-link" (click)="navigate(0)" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-            <span class="sr-only">Previous</span>
-          </button>
-        </li>
-        <li class="page-item">
-          <button class="page-link" disabled>
-            {{page}}
-          </button>
-        </li>
-        <li class="page-item">
-          <button class="page-link" (click)="navigate(1)" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-            <span class="sr-only">Next</span>
-          </button>
-        </li>
-      </ul>
-    </nav>
-  </div>
+</div>
+<!--container-->
+<div class=" row justify-content-center">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item">
+        <button *ngIf="page > 1" class="page-link" (click)="navigate(0)" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </button>
+      </li>
+      <li class="page-item">
+        <button class="page-link" disabled>
+          {{page}}
+        </button>
+      </li>
+      <li class="page-item">
+        <button class="page-link" (click)="navigate(1)" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </button>
+      </li>
+    </ul>
+  </nav>
 </div>

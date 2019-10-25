@@ -34,7 +34,6 @@ export class MovieDetailsComponent implements OnInit {
         this.url = this.sanitizer.bypassSecurityTrustResourceUrl(
           this.video + data
         );
-        console.log(this.video);
       });
     this.movieService
       .getMovieCredit(this.route.snapshot.params["id"])

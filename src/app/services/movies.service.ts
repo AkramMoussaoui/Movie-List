@@ -67,6 +67,12 @@ export class MoviesService {
       .get<IPopular>(`${this.url}top_rated`, { params })
       .pipe(
         map(data => {
+          data.results.forEach(item => {
+            const imgUrl = "http://image.tmdb.org/t/p/w300" + item.poster_path;
+            item.poster_path = this.sanitizer.bypassSecurityTrustStyle(
+              `url(${imgUrl})`
+            );
+          });
           return data.results;
         })
       );
