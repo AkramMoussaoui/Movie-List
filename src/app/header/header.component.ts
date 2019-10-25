@@ -8,10 +8,11 @@ import { FilterService } from "../services/filter.service";
 })
 export class HeaderComponent implements OnInit {
   constructor(private filter: FilterService) {}
-  listFilter: string;
+  listFilter: string = "";
   ngOnInit() {}
   onClick(): void {
     this.filter.changeMessage(this.listFilter);
+    this.listFilter = "";
   }
   navbarOpen = false;
 
