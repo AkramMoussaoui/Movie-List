@@ -11,7 +11,7 @@ import { DomSanitizer } from "@angular/platform-browser";
 })
 export class MoviesService {
   private url: string = "https://api.themoviedb.org/3/movie/";
-  private api_key: string = "43b746b767edc8522cb6200aa1821bcb";
+  private api_key: string = "Your API KEY";
 
   constructor(
     private httpClient: HttpClient,
