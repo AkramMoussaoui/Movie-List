@@ -14,8 +14,7 @@ export class MovieDetailsComponent implements OnInit {
   credit: ICredit;
   writer: Crew[];
   director: Crew[];
-  video: string = "https://www.youtube.com/embed/";
-  url: any;
+  id: string = "";
   constructor(
     private movieService: MoviesService,
     private route: ActivatedRoute,
@@ -31,9 +30,7 @@ export class MovieDetailsComponent implements OnInit {
     this.movieService
       .getVideo(this.route.snapshot.params["id"])
       .subscribe(data => {
-        this.url = this.sanitizer.bypassSecurityTrustResourceUrl(
-          this.video + data
-        );
+        this.id = data;
       });
     this.movieService
       .getMovieCredit(this.route.snapshot.params["id"])
