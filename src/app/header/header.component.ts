@@ -13,4 +13,9 @@ export class HeaderComponent implements OnInit {
   onClick(): void {
     this.filter.changeMessage(this.listFilter);
   }
+  navbarOpen = false;
+
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen;
+  }
 }
